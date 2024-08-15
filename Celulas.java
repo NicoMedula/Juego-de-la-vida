@@ -75,8 +75,9 @@ public class Celulas {
 
 
             System.out.println(t1.getListaCelulas());
-            System.out.println(t1.getMuereCelulaAislamiento());
+            System.out.println(t1.getSeMantienenVivaCelula());
             System.out.println(t1.getListaCelulas());
+            System.out.println(t1.getVecinosVivos());
 
             
         

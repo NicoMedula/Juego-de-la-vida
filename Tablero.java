@@ -118,7 +118,7 @@ public class Tablero {
 
             for (i=0; i<listaCelulas.size(); i++){
 
-                if (getListaCelulas().get(i).getVida() == 1 && getVecinosVivos()<=1) {
+                if (getListaCelulas().get(i).getVida() == 1 && (getVecinosVivos()-1)<=1) {
 
                     getListaCelulas().get(i).setVida(0);
 
@@ -134,6 +134,38 @@ public class Tablero {
                 
                 return "No murio ninguna celula";
             }
+
+        }
+
+        public String getSeMantienenVivaCelula(){
+
+            //Vive: una célula se mantiene viva si tiene 2 o 3 vecinos a su alrededor.
+
+            int i;
+            boolean celulaVive=false;
+            Celulas celulaQueVive=null;
+
+            for (i=0; i<listaCelulas.size(); i++){
+
+                if (getListaCelulas().get(i).getVida() == 1 && (getVecinosVivos()-1)>1 ) {
+
+                    getListaCelulas().get(i).setVida(1);
+
+                    celulaQueVive = getListaCelulas().get(i);
+                    celulaVive = true;
+                }else{
+                    getListaCelulas().get(i).setVida(0);
+                }
+            }
+
+            if (celulaVive) {
+                return "La celula que se mantiene viva es "+listaCelulas.indexOf(celulaQueVive); 
+                
+            }else{
+                
+                return "Murio una celula " ;
+            }
+
 
         }
 
