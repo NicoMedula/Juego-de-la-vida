@@ -17,7 +17,7 @@ Vive: una célula se mantiene viva si tiene 2 o 3 vecinos a su alrededor.
  */
 
 import java.util.Random;
-import java.util.ArrayList;
+
 
 
 public class Celulas {
@@ -75,11 +75,9 @@ public class Celulas {
 
 
             System.out.println(t1.getListaCelulas());
-            System.out.println(t1.getVecinosVivos());
-            System.out.println(t1.getNaceCelula());
-
+            System.out.println(t1.getMuereCelulaAislamiento());
             System.out.println(t1.getListaCelulas());
-            System.out.println(t1.getNaceCelula());
+
             
         
         

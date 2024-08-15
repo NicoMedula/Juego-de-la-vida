@@ -103,6 +103,40 @@ public class Tablero {
 
         }
 
+        public String getMuereCelulaAislamiento(){
+
+
+            //Muere: una célula viva puede morir por uno de 2 casos:
+	            
+            //1)Sobrepoblación: si tiene más de tres vecinos alrededor.
+	            
+            //2)Aislamiento: si tiene solo un vecino alrededor o ninguno.
+
+            int i;
+            boolean celulaMurio=false;
+            Celulas celulaQueMurio=null;
+
+            for (i=0; i<listaCelulas.size(); i++){
+
+                if (getListaCelulas().get(i).getVida() == 1 && getVecinosVivos()<=1) {
+
+                    getListaCelulas().get(i).setVida(0);
+
+                    celulaQueMurio = getListaCelulas().get(i);
+                    celulaMurio = true;
+                }
+            }
+
+            if (celulaMurio) {
+                return "Murio la celula "+listaCelulas.indexOf(celulaQueMurio); 
+                
+            }else{
+                
+                return "No murio ninguna celula";
+            }
+
+        }
+
         
 
 
