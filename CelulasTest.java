@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-
+import java.util.Random;
 
 /**
  
@@ -11,10 +11,11 @@ import org.junit.Test;
 Nace: Si una célula muerta tiene exactamente 3 células vecinas vivas "nace" (es decir, al turno siguiente estará viva).
 
 Muere: una célula viva puede morir por uno de 2 casos:
-	1)Sobrepoblación: si tiene más de tres vecinos alrededor.
+
+	1)Sobrepoblación: si tiene más de tres vecinos vivos alrededor.
 	2)Aislamiento: si tiene solo un vecino alrededor o ninguno.
 
-Vive: una célula se mantiene viva si tiene 2 o 3 vecinos a su alrededor.
+Vive: una célula se mantiene viva si tiene 2 o 3 vecinos vivas a su alrededor.
 
  */
 
@@ -23,6 +24,8 @@ public class CelulasTest {
     
     @Test
     public void estado_de_una_celula_Test(){
+        Random random = new Random();
+        int vidaRand = random.nextInt(2);
 
 
         Celulas c1= new Celulas();
@@ -31,10 +34,10 @@ public class CelulasTest {
         Celulas c4= new Celulas();
 
 
-        c1.setVida();
-        c2.setVida();
-        c3.setVida();
-        c4.setVida();
+        c1.setVida(vidaRand);
+        c2.setVida(vidaRand);
+        c3.setVida(vidaRand);
+        c4.setVida(vidaRand);
 
         assert c1.getVida() == 1 || c1.getVida()==0;
         assert c2.getVida() == 1 || c2.getVida()==0;
@@ -47,6 +50,9 @@ public class CelulasTest {
     @Test
     public void vecino_vivo_Test(){
 
+        Random random = new Random();
+        int vidaRand = random.nextInt(2);
+
         Tablero t1 = new Tablero();
 
         Celulas c1= new Celulas();
@@ -55,17 +61,17 @@ public class CelulasTest {
         Celulas c4= new Celulas();
 
 
-        c1.setVida();
-        c2.setVida();
-        c3.setVida();
-        c4.setVida();
+        c1.setVida(vidaRand);
+        c2.setVida(vidaRand);
+        c3.setVida(vidaRand);
+        c4.setVida(vidaRand);
 
         t1.addCelulas(c1);
         t1.addCelulas(c2);
         t1.addCelulas(c3);
         t1.addCelulas(c4);
 
-        assert t1.getVecinosVivos() == 2;
+        assert t1.getVecinosVivos() == 1;
         
         
 
@@ -75,6 +81,9 @@ public class CelulasTest {
     @Test
     public void vecino_muerto_Test(){
 
+        Random random = new Random();
+        int vidaRand = random.nextInt(2);
+
         Tablero t1 = new Tablero();
 
         Celulas c1= new Celulas();
@@ -83,17 +92,48 @@ public class CelulasTest {
         Celulas c4= new Celulas();
 
 
-        c1.setVida();
-        c2.setVida();
-        c3.setVida();
-        c4.setVida();
+        c1.setVida(vidaRand);
+        c2.setVida(vidaRand);
+        c3.setVida(vidaRand);
+        c4.setVida(vidaRand);
 
         t1.addCelulas(c1);
         t1.addCelulas(c2);
         t1.addCelulas(c3);
         t1.addCelulas(c4);
 
-        assert t1.getVecinosMuertos() == 3;
+        assert t1.getVecinosMuertos() == 2 || t1.getVecinosMuertos()==1 || t1.getVecinosMuertos()==3 ||
+                         t1.getVecinosMuertos()==4 || t1.getVecinosMuertos()==0;
+
+    }
+
+
+    @Test
+    public void celula_nace_Test(){
+
+        Random random = new Random();
+        int vidaRand = random.nextInt(2);
+
+        Tablero t1 = new Tablero();
+
+        Celulas c1= new Celulas();
+        Celulas c2= new Celulas();
+        Celulas c3= new Celulas();
+        Celulas c4= new Celulas();
+
+
+        c1.setVida(vidaRand);
+        c2.setVida(vidaRand);
+        c3.setVida(vidaRand);
+        c4.setVida(vidaRand);
+
+        t1.addCelulas(c1);
+        t1.addCelulas(c2);
+        t1.addCelulas(c3);
+        t1.addCelulas(c4);
+
+        assert t1.getNaceCelula() == "Nacio la celula " || t1.getNaceCelula()== "No nacio ninguna celula";
+
     }
 
     

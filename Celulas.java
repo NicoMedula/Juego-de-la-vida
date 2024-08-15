@@ -22,13 +22,13 @@ import java.util.ArrayList;
 
 public class Celulas {
 
-    Random random = new Random();
     private int vida;
-    int vidaRand = random.nextInt(2);
+    public Random random = new Random();
+    public int vidaRand = random.nextInt(2);
     
 
-    public void setVida(){
-        vida=vidaRand;
+    public void setVida(int valor){
+        vida=valor;
     }
 
     public int getVida(){
@@ -41,12 +41,14 @@ public class Celulas {
         return String.valueOf(vida); 
     }
 
-    public void getNaceCelula(){
-        
-    }
+    
 
     public static void main(String[] args) {
         int i;
+
+        Random random = new Random();
+        
+        
         for (i=0; i <4; i++){
 
         
@@ -60,19 +62,25 @@ public class Celulas {
 
         
 
-            c1.setVida();
-            c2.setVida();
-            c3.setVida();
-            c4.setVida();
+            c1.setVida(random.nextInt(2));
+            c2.setVida(random.nextInt(2));
+            c3.setVida(random.nextInt(2));
+            c4.setVida(random.nextInt(2));
 
+            
             t1.addCelulas(c1);
             t1.addCelulas(c2);
             t1.addCelulas(c3);
             t1.addCelulas(c4);
 
 
-            System.out.println(t1.getVecinosVivos());
             System.out.println(t1.getListaCelulas());
+            System.out.println(t1.getVecinosVivos());
+            System.out.println(t1.getNaceCelula());
+
+            System.out.println(t1.getListaCelulas());
+            System.out.println(t1.getNaceCelula());
+            
         
         
         }
