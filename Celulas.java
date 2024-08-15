@@ -24,36 +24,58 @@ public class Celulas {
 
     Random random = new Random();
     private int vida;
+    int vidaRand = random.nextInt(2);
     
 
     public void setVida(){
-        vida=random.nextInt(2);
+        vida=vidaRand;
     }
 
     public int getVida(){
         return vida;
     }
 
+    @Override
+    public String toString() {
+
+        return String.valueOf(vida); 
+    }
+
+    public void getNaceCelula(){
+        
+    }
+
     public static void main(String[] args) {
+        int i;
+        for (i=0; i <4; i++){
 
-        Celulas c1 = new Celulas();
-        Celulas c2 = new Celulas();
-        Celulas c3 = new Celulas();
+        
+            Celulas c1 = new Celulas();
+            Celulas c2 = new Celulas();
+            Celulas c3 = new Celulas();
+            Celulas c4 = new Celulas();
 
-        Tablero t1 = new Tablero();
+            Tablero t1 = new Tablero();
 
-        t1.addCelulas(c1);
-        t1.addCelulas(c2);
- 
 
-        c1.setVida();
-        c2.setVida();
-        c3.setVida();
+        
+
+            c1.setVida();
+            c2.setVida();
+            c3.setVida();
+            c4.setVida();
+
+            t1.addCelulas(c1);
+            t1.addCelulas(c2);
+            t1.addCelulas(c3);
+            t1.addCelulas(c4);
+
+
+            System.out.println(t1.getVecinosVivos());
+            System.out.println(t1.getListaCelulas());
         
         
-       
-        System.out.println("La celula es:" + c3.getVida());
-        System.out.println(t1.getListaCelulas());
+        }
     }
 
 }
